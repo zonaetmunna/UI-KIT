@@ -1,0 +1,96 @@
+# Card Stack
+
+A stacked card component with auto-flipping animation that creates a dynamic visual hierarchy of content.
+
+## Features
+
+- Auto-rotating cards that swap positions at regular intervals
+- Smooth animations powered by Framer Motion
+- Configurable offset and scale factor for card stacking
+- Responsive design that works on all screen sizes
+
+## Installation
+
+Make sure you have `framer-motion` installed in your project:
+
+```bash
+npm install framer-motion
+# or
+yarn add framer-motion
+```
+
+## Usage
+
+```tsx
+import { CardStack } from "@/components/library/cards/card-stack";
+
+export function MyComponent() {
+  const items = [
+    {
+      id: 1,
+      name: "John Doe",
+      designation: "Software Engineer",
+      content: <p>"This is a wonderful component!"</p>,
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      designation: "UX Designer",
+      content: <p>"I love using this in my projects."</p>,
+    },
+    // Add more items as needed
+  ];
+
+  return (
+    <CardStack
+      items={items}
+      offset={10} // Optional: Controls the vertical spacing between cards
+      scaleFactor={0.06} // Optional: Controls how much each card scales down
+    />
+  );
+}
+```
+
+## Props
+
+| Prop          | Type     | Default  | Description                                       |
+| ------------- | -------- | -------- | ------------------------------------------------- |
+| `items`       | `Card[]` | Required | Array of card objects to display                  |
+| `offset`      | `number` | `10`     | Vertical spacing between cards in pixels          |
+| `scaleFactor` | `number` | `0.06`   | Scale reduction factor for each card in the stack |
+
+### Card Type
+
+Each card in the `items` array should have the following structure:
+
+```typescript
+type Card = {
+  id: number;
+  name: string;
+  designation: string;
+  content: React.ReactNode;
+};
+```
+
+## Examples
+
+### Basic Example
+
+```tsx
+<CardStack items={testimonials} />
+```
+
+### Customized Spacing and Scale
+
+```tsx
+<CardStack items={testimonials} offset={15} scaleFactor={0.08} />
+```
+
+## Changelog
+
+### Version 1.0.0 (2023-11-10)
+
+- Initial release of the Card Stack component
+- Added auto-flipping animation feature
+- Implemented configurable offset and scale factor
+- Responsive design for mobile and desktop views

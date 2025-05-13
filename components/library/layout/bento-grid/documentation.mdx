@@ -1,0 +1,120 @@
+# Bento Grid
+
+A flexible grid layout component inspired by the Bento box design, allowing for interesting and varied grid layouts with different sized items.
+
+## Features
+
+- Responsive grid layout that adapts to different screen sizes
+- Support for items with different column and row spans
+- Clean, modern design with hover effects
+- Optional header, icon, title, and description for each grid item
+- Customizable via className prop (uses Tailwind CSS)
+
+## Usage
+
+```tsx
+import {
+  BentoGrid,
+  BentoGridItem,
+} from "@/components/library/layout/bento-grid";
+import { BarChart, Users } from "lucide-react";
+
+export function MyComponent() {
+  return (
+    <BentoGrid className="max-w-4xl mx-auto">
+      <BentoGridItem
+        title="User Analytics"
+        description="Track user engagement and growth metrics"
+        icon={<Users className="h-6 w-6 text-blue-500" />}
+      />
+      <BentoGridItem
+        title="Revenue Dashboard"
+        description="Monitor your financial performance"
+        icon={<BarChart className="h-6 w-6 text-green-500" />}
+        colSpan={2}
+      />
+      {/* Add more grid items as needed */}
+    </BentoGrid>
+  );
+}
+```
+
+## Props
+
+### BentoGrid Props
+
+| Prop        | Type        | Default  | Description                                       |
+| ----------- | ----------- | -------- | ------------------------------------------------- |
+| `className` | `string`    | `""`     | Additional classes to apply to the grid container |
+| `children`  | `ReactNode` | Required | The grid items to render                          |
+
+### BentoGridItem Props
+
+| Prop          | Type          | Default     | Description                                   |
+| ------------- | ------------- | ----------- | --------------------------------------------- |
+| `className`   | `string`      | `""`        | Additional classes to apply to the grid item  |
+| `title`       | `string`      | `undefined` | Title text for the grid item                  |
+| `description` | `string`      | `undefined` | Description text for the grid item            |
+| `header`      | `ReactNode`   | `undefined` | Custom header content (renders at the top)    |
+| `icon`        | `ReactNode`   | `undefined` | Icon to display in the grid item              |
+| `children`    | `ReactNode`   | `undefined` | Additional content to render in the grid item |
+| `colSpan`     | `1 \| 2 \| 3` | `1`         | Number of columns the item should span        |
+| `rowSpan`     | `1 \| 2`      | `1`         | Number of rows the item should span           |
+
+## Examples
+
+### Basic Grid
+
+```tsx
+<BentoGrid>
+  <BentoGridItem title="Item 1" description="Description 1" />
+  <BentoGridItem title="Item 2" description="Description 2" />
+  <BentoGridItem title="Item 3" description="Description 3" />
+</BentoGrid>
+```
+
+### Grid with Different Sized Items
+
+```tsx
+<BentoGrid>
+  <BentoGridItem title="Small Item" />
+  <BentoGridItem title="Wide Item" colSpan={2} />
+  <BentoGridItem title="Tall Item" rowSpan={2} />
+  <BentoGridItem title="Standard Item" />
+  <BentoGridItem title="Another Item" />
+  <BentoGridItem title="Full Width Item" colSpan={3} />
+</BentoGrid>
+```
+
+### Grid with Icons and Custom Content
+
+```tsx
+<BentoGrid>
+  <BentoGridItem title="Analytics" icon={<BarChart className="h-6 w-6" />}>
+    <div className="mt-4">
+      <p>Custom content can be added here</p>
+    </div>
+  </BentoGridItem>
+
+  <BentoGridItem
+    title="Users"
+    icon={<Users className="h-6 w-6" />}
+    header={
+      <img
+        src="/header-image.jpg"
+        alt="Header"
+        className="w-full h-40 object-cover rounded-t-xl"
+      />
+    }
+  />
+</BentoGrid>
+```
+
+## Changelog
+
+### Version 1.0.0 (2023-11-10)
+
+- Initial release of the Bento Grid component
+- Added support for different column and row spans
+- Implemented responsive design for mobile and desktop
+- Added hover effects and styling options
